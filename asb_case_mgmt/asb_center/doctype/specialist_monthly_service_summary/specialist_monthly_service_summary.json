@@ -1,0 +1,160 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-04-16 00:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Transaction",
+ "engine": "InnoDB",
+ "field_order": [
+  "summary_info_section",
+  "naming_series",
+  "specialist",
+  "center",
+  "summary_month",
+  "last_rebuilt_on",
+  "metrics_section",
+  "completed_visits",
+  "total_service_units",
+  "total_duration_minutes",
+  "unique_beneficiaries",
+  "no_show_count",
+  "cancelled_count"
+ ],
+ "fields": [
+  {
+   "fieldname": "summary_info_section",
+   "fieldtype": "Section Break",
+   "label": "Summary"
+  },
+  {
+   "default": "SMS-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "SMS-.YYYY.-.#####",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "specialist",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Specialist",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "center",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Center",
+   "options": "Center",
+   "reqd": 1
+  },
+  {
+   "fieldname": "summary_month",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Summary Month",
+   "reqd": 1
+  },
+  {
+   "fieldname": "last_rebuilt_on",
+   "fieldtype": "Datetime",
+   "label": "Last Rebuilt On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "metrics_section",
+   "fieldtype": "Section Break",
+   "label": "Metrics"
+  },
+  {
+   "default": "0",
+   "fieldname": "completed_visits",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Completed Visits",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_service_units",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Total Service Units",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_duration_minutes",
+   "fieldtype": "Int",
+   "label": "Total Duration (Minutes)",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "unique_beneficiaries",
+   "fieldtype": "Int",
+   "label": "Unique Beneficiaries",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "no_show_count",
+   "fieldtype": "Int",
+   "label": "No Show Count",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "cancelled_count",
+   "fieldtype": "Int",
+   "label": "Cancelled Count",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-16 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "ASB center",
+ "name": "Specialist Monthly Service Summary",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "ASB Center Coordinator"
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "ASB Specialist"
+  }
+ ],
+ "search_fields": "specialist,summary_month,center",
+ "sort_field": "summary_month",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

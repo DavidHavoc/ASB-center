@@ -117,13 +117,23 @@ app_license = "mit"
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
-#
-# has_permission = {
-# 	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
+permission_query_conditions = {
+	"Center": "asb_case_mgmt.permissions.center_query_conditions",
+	"Beneficiary": "asb_case_mgmt.permissions.beneficiary_query_conditions",
+	"Service Visit": "asb_case_mgmt.permissions.service_visit_query_conditions",
+	"Assessment": "asb_case_mgmt.permissions.assessment_query_conditions",
+	"Individual Plan": "asb_case_mgmt.permissions.individual_plan_query_conditions",
+	"Specialist Monthly Service Summary": "asb_case_mgmt.permissions.specialist_monthly_service_summary_query_conditions",
+}
+
+has_permission = {
+	"Center": "asb_case_mgmt.permissions.center_has_permission",
+	"Beneficiary": "asb_case_mgmt.permissions.beneficiary_has_permission",
+	"Service Visit": "asb_case_mgmt.permissions.service_visit_has_permission",
+	"Assessment": "asb_case_mgmt.permissions.assessment_has_permission",
+	"Individual Plan": "asb_case_mgmt.permissions.individual_plan_has_permission",
+	"Specialist Monthly Service Summary": "asb_case_mgmt.permissions.specialist_monthly_service_summary_has_permission",
+}
 
 # DocType Class
 # ---------------
@@ -137,13 +147,19 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Service Visit": {
+		"after_insert": "asb_case_mgmt.payroll.on_service_visit_change",
+		"on_update": "asb_case_mgmt.payroll.on_service_visit_change",
+		"on_trash": "asb_case_mgmt.payroll.on_service_visit_change",
+	},
+	"Stock Entry": {
+		"validate": "asb_case_mgmt.stock.validate_stock_entry_center_scope",
+	},
+	"Asset": {
+		"validate": "asb_case_mgmt.assets.validate_asset_center_scope",
+	},
+}
 
 # Scheduled Tasks
 # ---------------
@@ -246,4 +262,9 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
+
+role_home_page = {
+	"ASB Specialist": "/app/asb-center-home",
+	"ASB Center Coordinator": "/app/asb-center-home",
+}
 

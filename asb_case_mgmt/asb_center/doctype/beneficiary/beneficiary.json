@@ -1,0 +1,293 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:beneficiary_code",
+ "creation": "2026-04-09 00:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "beneficiary_code",
+  "service_type",
+  "service_status",
+  "center",
+  "column_break_primary",
+  "full_name",
+  "personal_id",
+  "sex",
+  "birth_date",
+  "age",
+  "age_category",
+  "contact_section",
+  "region",
+  "municipality",
+  "address",
+  "column_break_contact",
+  "guardian_parent",
+  "phone",
+  "email",
+  "case_section",
+  "diagnosis_status",
+  "first_assessment_date",
+  "family_status",
+  "enrollment_date",
+  "first_service_date",
+  "application_contract_number",
+  "exit_date",
+  "exit_reason",
+  "specialists_section",
+  "responsible_specialists",
+  "attachments_section",
+  "attachment",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "beneficiary_code",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Beneficiary Code",
+   "reqd": 1,
+   "search_index": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Service Type",
+   "options": "Disability Support\nChild Protection\nSocial Protection\nRehabilitation\nOther",
+   "reqd": 1
+  },
+  {
+   "default": "Active",
+   "fieldname": "service_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Service Status",
+   "options": "Applied\nActive\nOn Hold\nExited"
+  },
+  {
+   "fieldname": "center",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Center",
+   "options": "Center",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_primary",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Full Name",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "personal_id",
+   "fieldtype": "Data",
+   "label": "Personal ID",
+   "search_index": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "sex",
+   "fieldtype": "Select",
+   "label": "Sex",
+   "options": "Male\nFemale\nOther"
+  },
+  {
+   "fieldname": "birth_date",
+   "fieldtype": "Date",
+   "label": "Birth Date"
+  },
+  {
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "label": "Age",
+   "read_only": 1
+  },
+  {
+   "fieldname": "age_category",
+   "fieldtype": "Select",
+   "label": "Age Category",
+   "options": "Early Childhood\nChild/Adolescent\nAdult\nSenior",
+   "read_only": 1
+  },
+  {
+   "fieldname": "contact_section",
+   "fieldtype": "Section Break",
+   "label": "Contact and Location"
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Data",
+   "label": "Region"
+  },
+  {
+   "fieldname": "municipality",
+   "fieldtype": "Data",
+   "label": "Municipality"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "column_break_contact",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "guardian_parent",
+   "fieldtype": "Data",
+   "label": "Guardian/Parent"
+  },
+  {
+   "fieldname": "phone",
+   "fieldtype": "Data",
+   "label": "Phone",
+   "options": "Phone"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "case_section",
+   "fieldtype": "Section Break",
+   "label": "Case Details"
+  },
+  {
+   "fieldname": "diagnosis_status",
+   "fieldtype": "Small Text",
+   "label": "Diagnosis/Status"
+  },
+  {
+   "fieldname": "first_assessment_date",
+   "fieldtype": "Date",
+   "label": "First Assessment Date"
+  },
+  {
+   "fieldname": "family_status",
+   "fieldtype": "Select",
+   "label": "Family Status",
+   "options": "Single\nMarried\nDivorced\nWidowed\nSeparated\nOther"
+  },
+  {
+   "fieldname": "enrollment_date",
+   "fieldtype": "Date",
+   "label": "Enrollment Date"
+  },
+  {
+   "fieldname": "first_service_date",
+   "fieldtype": "Date",
+   "label": "First Service Date"
+  },
+  {
+   "fieldname": "application_contract_number",
+   "fieldtype": "Data",
+   "label": "Application/Contract Number"
+  },
+  {
+   "fieldname": "exit_date",
+   "fieldtype": "Date",
+   "label": "Exit Date"
+  },
+  {
+   "fieldname": "exit_reason",
+   "fieldtype": "Small Text",
+   "label": "Exit Reason"
+  },
+  {
+   "fieldname": "specialists_section",
+   "fieldtype": "Section Break",
+   "label": "Responsible Specialist(s)"
+  },
+  {
+   "fieldname": "responsible_specialists",
+   "fieldtype": "Table",
+   "label": "Responsible Specialists",
+   "options": "Beneficiary Specialist"
+  },
+  {
+   "fieldname": "attachments_section",
+   "fieldtype": "Section Break",
+   "label": "Attachments and Notes"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Attachment"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-09 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "ASB center",
+ "name": "Beneficiary",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "ASB Center Coordinator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "report": 1,
+   "role": "ASB Specialist",
+   "write": 1
+  }
+ ],
+ "search_fields": "beneficiary_code,full_name,personal_id,phone,email",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "full_name",
+ "track_changes": 1
+}

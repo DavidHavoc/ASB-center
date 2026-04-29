@@ -4,4 +4,8 @@
 *.swp
 tags
 node_modules
+
+# Ignore bulk local docs while keeping the main browser UAT script
+docs/*.md
+!docs/UAT_BROWSER_MANUAL_SCRIPT.md
 __pycache__

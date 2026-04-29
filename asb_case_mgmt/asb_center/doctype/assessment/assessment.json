@@ -1,0 +1,197 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2026-04-09 00:00:00.000000",
+ "doctype": "DocType",
+ "document_type": "Transaction",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_info_section",
+  "naming_series",
+  "beneficiary",
+  "center",
+  "specialist",
+  "assessment_date",
+  "assessment_type",
+    "previous_assessment",
+    "assessment_cycle_number",
+  "scoring_tool",
+  "total_score",
+  "service_schedule_count",
+  "domain_section",
+  "domain_scores",
+  "progress_summary",
+  "recommendations",
+  "next_review_date",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_info_section",
+   "fieldtype": "Section Break",
+   "label": "Assessment Details"
+  },
+  {
+   "default": "ASM-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "no_copy": 1,
+   "options": "ASM-.YYYY.-.#####",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "beneficiary",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Beneficiary",
+   "options": "Beneficiary",
+   "reqd": 1
+  },
+  {
+   "fieldname": "center",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Center",
+   "options": "Center",
+   "reqd": 1
+  },
+  {
+   "fieldname": "specialist",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Specialist",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "assessment_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "assessment_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Assessment Type",
+   "options": "Initial\nRepeated\nFinal",
+   "reqd": 1
+  },
+    {
+     "depends_on": "eval:doc.assessment_type=='Repeated' || doc.assessment_type=='Final'",
+     "fieldname": "previous_assessment",
+     "fieldtype": "Link",
+     "in_standard_filter": 1,
+     "label": "Previous Assessment",
+     "options": "Assessment"
+    },
+    {
+     "fieldname": "assessment_cycle_number",
+     "fieldtype": "Int",
+     "in_list_view": 1,
+     "label": "Cycle Number",
+     "read_only": 1
+    },
+  {
+   "fieldname": "scoring_tool",
+   "fieldtype": "Select",
+   "label": "Scoring Tool",
+     "options": "Barthel\nAEPS (Old)\nAEPS (New)\nICF-Based\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_score",
+   "fieldtype": "Float",
+   "label": "Total Score"
+  },
+  {
+   "fieldname": "service_schedule_count",
+   "fieldtype": "Int",
+   "label": "Service Delivery Schedule Count"
+  },
+  {
+   "fieldname": "domain_section",
+   "fieldtype": "Section Break",
+   "label": "Domain Tracking"
+  },
+  {
+   "fieldname": "domain_scores",
+   "fieldtype": "Table",
+   "label": "Domain Scores",
+    "options": "Assessment Domain Score",
+    "reqd": 1
+  },
+  {
+   "fieldname": "progress_summary",
+   "fieldtype": "Small Text",
+   "label": "Progress Summary"
+  },
+  {
+   "fieldname": "recommendations",
+   "fieldtype": "Text Editor",
+   "label": "Recommendations"
+  },
+  {
+   "fieldname": "next_review_date",
+   "fieldtype": "Date",
+   "label": "Next Review Date"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-09 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "ASB center",
+ "name": "Assessment",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "ASB Center Coordinator",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "read": 1,
+   "report": 1,
+   "role": "ASB Specialist",
+   "write": 1
+  }
+ ],
+ "search_fields": "beneficiary,specialist,assessment_type",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

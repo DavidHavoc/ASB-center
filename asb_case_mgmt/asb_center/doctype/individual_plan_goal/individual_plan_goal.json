@@ -1,0 +1,60 @@
+{
+ "actions": [],
+ "creation": "2026-04-09 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "goal",
+  "target_date",
+  "status",
+  "progress_notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "goal",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Goal",
+   "reqd": 1
+  },
+  {
+   "fieldname": "target_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Target Date"
+  },
+  {
+   "default": "Planned",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Planned\nIn Progress\nAchieved\nDeferred"
+  },
+  {
+   "fieldname": "progress_notes",
+   "fieldtype": "Small Text",
+   "label": "Progress Notes"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-04-09 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "ASB center",
+ "name": "Individual Plan Goal",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "write": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
