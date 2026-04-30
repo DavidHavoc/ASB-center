@@ -112,7 +112,7 @@ def get_specialist_monthly_totals(specialist=None, summary_month=None, center=No
 	if center:
 		filters["center"] = center
 
-	return frappe.get_all(
+	return frappe.get_list(
 		"Specialist Monthly Service Summary",
 		filters=filters,
 		fields=[

@@ -6,7 +6,11 @@ from frappe import _
 from frappe.model.document import Document
 from frappe.utils import getdate
 
-from asb_case_mgmt.asb_center.utils import get_beneficiary_center, is_specialist_assigned_to_beneficiary
+from asb_case_mgmt.asb_center.utils import (
+	get_beneficiary_center,
+	get_employee_center,
+	is_specialist_assigned_to_beneficiary,
+)
 
 
 class ServiceVisit(Document):
@@ -68,10 +72,43 @@ class ServiceVisit(Document):
 			)
 
 
+def _require_beneficiary_read_access(beneficiary):
+	frappe.has_permission("Beneficiary", doc=beneficiary, ptype="read", throw=True)
+
+
+def _require_specialist_summary_read_access(specialist, month):
+	summary_name = frappe.db.get_value(
+		"Specialist Monthly Service Summary",
+		{"specialist": specialist, "summary_month": month},
+		"name",
+	)
+	if summary_name:
+		frappe.has_permission(
+			"Specialist Monthly Service Summary", doc=summary_name, ptype="read", throw=True
+		)
+		return
+
+	center = get_employee_center(specialist)
+	if not center:
+		frappe.throw(
+			_("Specialist {0} does not have a linked Center.").format(frappe.bold(specialist))
+		)
+
+	permission_doc = frappe.new_doc("Specialist Monthly Service Summary")
+	permission_doc.specialist = specialist
+	permission_doc.center = center
+	permission_doc.summary_month = month
+	frappe.has_permission(
+		"Specialist Monthly Service Summary", doc=permission_doc, ptype="read", throw=True
+	)
+
+
 @frappe.whitelist()
 def get_monthly_visit_count(beneficiary, month=None):
 	if not beneficiary:
 		return 0
+
+	_require_beneficiary_read_access(beneficiary)
 
 	filters = {
 		"beneficiary": beneficiary,
@@ -87,6 +124,8 @@ def get_monthly_visit_count(beneficiary, month=None):
 def get_specialist_monthly_service_units(specialist, month):
 	if not specialist or not month:
 		frappe.throw(_("Both Specialist and Month are required."))
+
+	_require_specialist_summary_read_access(specialist, month)
 
 	from asb_case_mgmt.payroll import rebuild_specialist_monthly_summary
 

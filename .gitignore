@@ -1,9 +1,17 @@
 .DS_Store
 *.pyc
+__pycache__/
 *.egg-info
 *.swp
 tags
 node_modules
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.vscode/
+.idea/
+*.log
 
 # Ignore bulk local docs while keeping the main browser UAT script
 docs/*.md
