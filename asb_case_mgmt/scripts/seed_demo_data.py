@@ -4,19 +4,19 @@ from frappe.utils import today
 
 DEMO_CENTERS = [
 	{
-		"center_name": "ASB Tbilisi Vake Center",
+		"center_name": "SSK Tbilisi Vake Center",
 		"description": "Main urban service center in Tbilisi",
 		"address": "Tbilisi - Vake",
 		"phone": "+995599000001",
-		"email": "tbilisi.vake.center@asb.localhost",
+		"email": "tbilisi.vake.center@ssk.localhost",
 		"legacy_names": ["ASB Baghdad Center"],
 	},
 	{
-		"center_name": "ASB Tbilisi Saburtalo Center",
+		"center_name": "SSK Tbilisi Saburtalo Center",
 		"description": "Secondary service center in Tbilisi",
 		"address": "Tbilisi - Saburtalo",
 		"phone": "+995599000002",
-		"email": "tbilisi.saburtalo.center@asb.localhost",
+		"email": "tbilisi.saburtalo.center@ssk.localhost",
 		"legacy_names": ["ASB Basra Center"],
 	},
 ]
@@ -27,9 +27,9 @@ DEMO_EMPLOYEES = [
 		"last_name": "Beridze",
 		"gender": "Female",
 		"date_of_birth": "1990-05-14",
-		"user_id": "nino.specialist@asb.localhost",
-		"center": "ASB Tbilisi Vake Center",
-		"contract_number": "ASB-TBS-EMP-001",
+		"user_id": "nino.specialist@ssk.localhost",
+		"center": "SSK Tbilisi Vake Center",
+		"contract_number": "SSK-TBS-EMP-001",
 		"legacy_user_ids": ["ali.specialist@asb.localhost"],
 	},
 	{
@@ -37,9 +37,9 @@ DEMO_EMPLOYEES = [
 		"last_name": "Kapanadze",
 		"gender": "Male",
 		"date_of_birth": "1992-11-03",
-		"user_id": "giorgi.specialist@asb.localhost",
-		"center": "ASB Tbilisi Vake Center",
-		"contract_number": "ASB-TBS-EMP-002",
+		"user_id": "giorgi.specialist@ssk.localhost",
+		"center": "SSK Tbilisi Vake Center",
+		"contract_number": "SSK-TBS-EMP-002",
 		"legacy_user_ids": ["sara.specialist@asb.localhost"],
 	},
 	{
@@ -47,9 +47,9 @@ DEMO_EMPLOYEES = [
 		"last_name": "Mchedlidze",
 		"gender": "Female",
 		"date_of_birth": "1988-08-22",
-		"user_id": "ana.specialist@asb.localhost",
-		"center": "ASB Tbilisi Saburtalo Center",
-		"contract_number": "ASB-TBS-EMP-003",
+		"user_id": "ana.specialist@ssk.localhost",
+		"center": "SSK Tbilisi Saburtalo Center",
+		"contract_number": "SSK-TBS-EMP-003",
 		"legacy_user_ids": ["omar.specialist@asb.localhost"],
 	},
 ]
@@ -59,40 +59,40 @@ DEMO_BENEFICIARIES = [
 		"beneficiary_code": "BEN-DEMO-0001",
 		"full_name": "Nino Gelashvili",
 		"service_type": "Disability Support",
-		"center": "ASB Tbilisi Vake Center",
-		"specialist": "nino.specialist@asb.localhost",
+		"center": "SSK Tbilisi Vake Center",
+		"specialist": "nino.specialist@ssk.localhost",
 		"birth_date": "2011-06-20",
 	},
 	{
 		"beneficiary_code": "BEN-DEMO-0002",
 		"full_name": "Luka Chikovani",
 		"service_type": "Child Protection",
-		"center": "ASB Tbilisi Vake Center",
-		"specialist": "giorgi.specialist@asb.localhost",
+		"center": "SSK Tbilisi Vake Center",
+		"specialist": "giorgi.specialist@ssk.localhost",
 		"birth_date": "2016-02-12",
 	},
 	{
 		"beneficiary_code": "BEN-DEMO-0003",
 		"full_name": "Elene Qavlashvili",
 		"service_type": "Rehabilitation",
-		"center": "ASB Tbilisi Vake Center",
-		"specialist": "nino.specialist@asb.localhost",
+		"center": "SSK Tbilisi Vake Center",
+		"specialist": "nino.specialist@ssk.localhost",
 		"birth_date": "2008-09-30",
 	},
 	{
 		"beneficiary_code": "BEN-DEMO-0004",
 		"full_name": "Saba Tsertsvadze",
 		"service_type": "Social Protection",
-		"center": "ASB Tbilisi Saburtalo Center",
-		"specialist": "ana.specialist@asb.localhost",
+		"center": "SSK Tbilisi Saburtalo Center",
+		"specialist": "ana.specialist@ssk.localhost",
 		"birth_date": "2014-01-18",
 	},
 	{
 		"beneficiary_code": "BEN-DEMO-0005",
 		"full_name": "Mariam Dvalishvili",
 		"service_type": "Disability Support",
-		"center": "ASB Tbilisi Saburtalo Center",
-		"specialist": "ana.specialist@asb.localhost",
+		"center": "SSK Tbilisi Saburtalo Center",
+		"specialist": "ana.specialist@ssk.localhost",
 		"birth_date": "2012-12-05",
 	},
 ]
@@ -105,12 +105,12 @@ def _ensure_gender_values():
 
 
 def _ensure_company():
-	if not frappe.db.exists("Company", "ASB Foundation"):
+	if not frappe.db.exists("Company", "SSK Foundation"):
 		frappe.get_doc(
 			{
 				"doctype": "Company",
-				"company_name": "ASB Foundation",
-				"abbr": "ASB",
+				"company_name": "SSK Foundation",
+				"abbr": "SSK",
 				"default_currency": "USD",
 				"country": "Iraq",
 			}
@@ -126,7 +126,7 @@ def _ensure_user(email, first_name):
 				"first_name": first_name,
 				"enabled": 1,
 				"send_welcome_email": 0,
-				"roles": [{"role": "ASB Specialist"}],
+				"roles": [{"role": "SSK Specialist"}],
 			}
 		).insert(ignore_permissions=True)
 
@@ -173,7 +173,7 @@ def execute():
 			doc.last_name = employee.get("last_name")
 			doc.gender = employee["gender"]
 			doc.date_of_birth = employee["date_of_birth"]
-			doc.company = "ASB Foundation"
+			doc.company = "SSK Foundation"
 			doc.asb_center = center_lookup[employee["center"]]
 			doc.asb_contract_number = employee["contract_number"]
 			doc.asb_contract_start_date = today()
@@ -190,7 +190,7 @@ def execute():
 				"date_of_birth": employee["date_of_birth"],
 				"date_of_joining": today(),
 				"status": "Active",
-				"company": "ASB Foundation",
+				"company": "SSK Foundation",
 				"user_id": employee["user_id"],
 				"asb_center": center_lookup[employee["center"]],
 				"asb_contract_number": employee["contract_number"],
@@ -216,7 +216,7 @@ def execute():
 			doc.municipality = "Demo Municipality"
 			doc.guardian_parent = "Demo Guardian"
 			doc.phone = "+995599111111"
-			doc.email = f"{beneficiary['beneficiary_code'].lower()}@asb.localhost"
+			doc.email = f"{beneficiary['beneficiary_code'].lower()}@ssk.localhost"
 			doc.sex = "Female"
 			doc.birth_date = beneficiary["birth_date"]
 			doc.diagnosis_status = "Demo case for UAT"
@@ -252,7 +252,7 @@ def execute():
 				"municipality": "Demo Municipality",
 				"guardian_parent": "Demo Guardian",
 				"phone": "+9647711111111",
-				"email": f"{beneficiary['beneficiary_code'].lower()}@asb.localhost",
+				"email": f"{beneficiary['beneficiary_code'].lower()}@ssk.localhost",
 				"sex": "Female",
 				"birth_date": beneficiary["birth_date"],
 				"diagnosis_status": "Demo case for UAT",

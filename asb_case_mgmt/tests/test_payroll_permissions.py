@@ -13,8 +13,8 @@ class TestPayrollPermissions(FrappeTestCase):
 		frappe.set_user("Administrator")
 
 		self.summary_month = "2099-01"
-		self._ensure_role("ASB Center Coordinator")
-		self._ensure_role("ASB Specialist")
+		self._ensure_role("SSK Center Coordinator")
+		self._ensure_role("SSK Specialist")
 		self._ensure_employee_linkage()
 		self.company = self._get_or_create_company()
 		self.department = self._ensure_department(self.company)
@@ -25,17 +25,17 @@ class TestPayrollPermissions(FrappeTestCase):
 
 		suffix = frappe.generate_hash(length=8)
 		self.coordinator_user = create_user(
-			f"test_asb_coord_{suffix}@example.com", "ASB Center Coordinator"
+			f"test_asb_coord_{suffix}@example.com", "SSK Center Coordinator"
 		)
 		self.specialist_user_a = create_user(
-			f"test_asb_spec_a_{suffix}@example.com", "ASB Specialist"
+			f"test_asb_spec_a_{suffix}@example.com", "SSK Specialist"
 		)
 		self.specialist_user_b = create_user(
-			f"test_asb_spec_b_{suffix}@example.com", "ASB Specialist"
+			f"test_asb_spec_b_{suffix}@example.com", "SSK Specialist"
 		)
-		self._ensure_user_role(self.coordinator_user, "ASB Center Coordinator")
-		self._ensure_user_role(self.specialist_user_a, "ASB Specialist")
-		self._ensure_user_role(self.specialist_user_b, "ASB Specialist")
+		self._ensure_user_role(self.coordinator_user, "SSK Center Coordinator")
+		self._ensure_user_role(self.specialist_user_a, "SSK Specialist")
+		self._ensure_user_role(self.specialist_user_b, "SSK Specialist")
 
 		self.employee_coord = make_employee(
 			self.coordinator_user.name,

@@ -11,7 +11,7 @@ def execute():
 			{
 				"fieldname": "asb_section",
 				"fieldtype": "Section Break",
-				"label": "ASB Case Management",
+				"label": "SSK Case Management",
 				"insert_after": "date_of_joining",
 				"collapsible": 1,
 			},
@@ -53,8 +53,8 @@ def execute():
 	create_custom_fields(custom_fields, update=True)
 
 	role_home_pages = {
-		"ASB Specialist": "/app/asb-center-home",
-		"ASB Center Coordinator": "/app/asb-center-home",
+		"SSK Specialist": "/app/ssk-center-home",
+		"SSK Center Coordinator": "/app/ssk-center-home",
 	}
 
 	for role_name, home_page in role_home_pages.items():

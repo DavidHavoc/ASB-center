@@ -8,7 +8,7 @@ from frappe.utils import nowdate
 
 def execute():
 	company = (
-		frappe.db.get_value("Company", {"company_name": "ASB Foundation"}, "name")
+		frappe.db.get_value("Company", {"company_name": "SSK Foundation"}, "name")
 		or frappe.db.get_value("Company", {}, "name")
 	)
 	if not company:

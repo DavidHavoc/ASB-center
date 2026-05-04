@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"asb_header_1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>ASB Case Management</b></span>\",\"col\":12}},{\"id\":\"asb_shortcut_center\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Center\",\"col\":3}},{\"id\":\"asb_shortcut_individual_plan\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Individual Plan\",\"col\":3}},{\"id\":\"asb_shortcut_beneficiary\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Beneficiary\",\"col\":3}},{\"id\":\"asb_shortcut_service_visit\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Visit\",\"col\":3}},{\"id\":\"asb_shortcut_assessment\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Assessment\",\"col\":3}}]",
+ "content": "[{\"id\":\"asb_header_1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>SSK Case Management</b></span>\",\"col\":12}},{\"id\":\"asb_shortcut_center\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Center\",\"col\":3}},{\"id\":\"asb_shortcut_individual_plan\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Individual Plan\",\"col\":3}},{\"id\":\"asb_shortcut_beneficiary\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Beneficiary\",\"col\":3}},{\"id\":\"asb_shortcut_service_visit\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Visit\",\"col\":3}},{\"id\":\"asb_shortcut_assessment\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Assessment\",\"col\":3}}]",
  "creation": "2026-04-09 00:00:00.000000",
  "custom_blocks": [],
  "docstatus": 0,
@@ -10,12 +10,12 @@
  "icon": "home",
  "idx": 0,
  "is_hidden": 0,
- "label": "ASB Center Home",
+ "label": "SSK Center Home",
  "links": [],
  "modified": "2026-04-09 00:00:00.000000",
  "modified_by": "Administrator",
- "module": "ASB center",
- "name": "ASB Center Home",
+ "module": "SSK center",
+ "name": "SSK Center Home",
  "number_cards": [],
  "owner": "Administrator",
  "parent_page": "",
@@ -50,5 +50,5 @@
    "type": "DocType"
   }
  ],
- "title": "ASB Center Home"
+ "title": "SSK Center Home"
 }

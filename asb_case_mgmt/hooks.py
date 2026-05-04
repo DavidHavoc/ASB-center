@@ -1,7 +1,7 @@
 app_name = "asb_case_mgmt"
-app_title = "ASB center"
+app_title = "SSK center"
 app_publisher = "Dvd"
-app_description = "Center app for ASB "
+app_description = "Center app for SSK "
 app_email = "godhvc@gmail.com"
 app_license = "mit"
 
@@ -264,7 +264,7 @@ doc_events = {
 # ignore_translatable_strings_from = []
 
 role_home_page = {
-	"ASB Specialist": "/app/asb-center-home",
-	"ASB Center Coordinator": "/app/asb-center-home",
+	"SSK Specialist": "/app/ssk-center-home",
+	"SSK Center Coordinator": "/app/ssk-center-home",
 }
 

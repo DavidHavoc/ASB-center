@@ -154,7 +154,7 @@
  "links": [],
  "modified": "2026-04-09 00:00:00.000000",
  "modified_by": "Administrator",
- "module": "ASB center",
+ "module": "SSK center",
  "name": "Assessment",
  "owner": "Administrator",
  "permissions": [
@@ -177,7 +177,7 @@
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "ASB Center Coordinator",
+  "role": "SSK Center Coordinator",
    "share": 1,
    "write": 1
   },
@@ -185,7 +185,7 @@
    "create": 1,
    "read": 1,
    "report": 1,
-   "role": "ASB Specialist",
+  "role": "SSK Specialist",
    "write": 1
   }
  ],

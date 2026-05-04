@@ -5,8 +5,8 @@ import frappe
 
 
 BASE_ROLES = (
-	{"role_name": "ASB Center Coordinator", "desk_access": 1},
-	{"role_name": "ASB Specialist", "desk_access": 1},
+	{"role_name": "SSK Center Coordinator", "desk_access": 1},
+	{"role_name": "SSK Specialist", "desk_access": 1},
 )
 
 

@@ -43,7 +43,7 @@ def _setup_custom_fields():
 			{
 				"fieldname": "asb_center",
 				"fieldtype": "Link",
-				"label": "ASB Center",
+				"label": "SSK Center",
 				"options": "Center",
 				"insert_after": "company",
 				"in_standard_filter": 1,
@@ -53,7 +53,7 @@ def _setup_custom_fields():
 			{
 				"fieldname": "asb_center",
 				"fieldtype": "Link",
-				"label": "ASB Center",
+				"label": "SSK Center",
 				"options": "Center",
 				"insert_after": "cost_center",
 				"in_standard_filter": 1,
@@ -63,7 +63,7 @@ def _setup_custom_fields():
 			{
 				"fieldname": "asb_center",
 				"fieldtype": "Link",
-				"label": "ASB Center",
+				"label": "SSK Center",
 				"options": "Center",
 				"insert_after": "item",
 				"in_standard_filter": 1,
@@ -117,10 +117,10 @@ def _ensure_item_group(item_group_name, parent_item_group=None, is_group=0):
 
 def _setup_item_groups():
 	root = _ensure_item_group("All Item Groups", is_group=1)
-	asb_supplies = _ensure_item_group("ASB Supplies", parent_item_group=root, is_group=1)
-	_ensure_item_group("ASB Consumables", parent_item_group=asb_supplies, is_group=0)
-	_ensure_item_group("ASB Medical Supplies", parent_item_group=asb_supplies, is_group=0)
-	_ensure_item_group("ASB Assistive Devices", parent_item_group=asb_supplies, is_group=0)
+	asb_supplies = _ensure_item_group("SSK Supplies", parent_item_group=root, is_group=1)
+	_ensure_item_group("SSK Consumables", parent_item_group=asb_supplies, is_group=0)
+	_ensure_item_group("SSK Medical Supplies", parent_item_group=asb_supplies, is_group=0)
+	_ensure_item_group("SSK Assistive Devices", parent_item_group=asb_supplies, is_group=0)
 
 
 
@@ -142,7 +142,7 @@ def _setup_stock_entry_types():
 
 def _company_name_and_abbr():
 	company = (
-		frappe.db.get_value("Company", {"company_name": "ASB Foundation"}, "name")
+		frappe.db.get_value("Company", {"company_name": "SSK Foundation"}, "name")
 		or frappe.db.get_value("Company", {}, "name")
 	)
 	if not company:

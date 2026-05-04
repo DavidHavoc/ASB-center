@@ -6,9 +6,9 @@ from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
 
 ASSET_CATEGORY_MAP = {
-	"ASB Assistive Devices": "Office Equipments - ASB",
-	"ASB IT Equipment": "Electronic Equipments - ASB",
-	"ASB Facility Assets": "Furnitures and Fixtures - ASB",
+	"SSK Assistive Devices": "Office Equipments - SSK",
+	"SSK IT Equipment": "Electronic Equipments - SSK",
+	"SSK Facility Assets": "Furnitures and Fixtures - SSK",
 }
 
 
@@ -26,7 +26,7 @@ def _setup_custom_fields():
 			{
 				"fieldname": "asb_center",
 				"fieldtype": "Link",
-				"label": "ASB Center",
+				"label": "SSK Center",
 				"options": "Center",
 				"insert_after": "location_name",
 				"in_standard_filter": 1,
@@ -36,7 +36,7 @@ def _setup_custom_fields():
 			{
 				"fieldname": "asb_center",
 				"fieldtype": "Link",
-				"label": "ASB Center",
+				"label": "SSK Center",
 				"options": "Center",
 				"insert_after": "location",
 				"in_standard_filter": 1,
@@ -87,7 +87,7 @@ def _setup_center_locations():
 
 def _company_name():
 	return (
-		frappe.db.get_value("Company", {"company_name": "ASB Foundation"}, "name")
+		frappe.db.get_value("Company", {"company_name": "SSK Foundation"}, "name")
 		or frappe.db.get_value("Company", {}, "name")
 	)
 

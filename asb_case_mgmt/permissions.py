@@ -16,11 +16,11 @@ def _is_system_manager(user):
 
 
 def _is_center_coordinator(user):
-	return _has_role(user, "ASB Center Coordinator")
+	return _has_role(user, "SSK Center Coordinator")
 
 
 def _is_specialist(user):
-	return _has_role(user, "ASB Specialist")
+	return _has_role(user, "SSK Specialist")
 
 
 def _center_condition(doctype, center):
