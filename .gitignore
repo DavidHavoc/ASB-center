@@ -13,7 +13,6 @@ node_modules
 .idea/
 *.log
 
-# Ignore bulk local docs while keeping the main browser UAT script
-docs/*.md
-!docs/UAT_BROWSER_MANUAL_SCRIPT.md
+# Local-only docs
+docs/local/
 __pycache__

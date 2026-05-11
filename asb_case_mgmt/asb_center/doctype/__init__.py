@@ -1,1 +1,1 @@
-# Package marker for ASB center DocTypes.
+# Package marker for SSK center DocTypes.

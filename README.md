@@ -1,6 +1,7 @@
-# ASB Case Management
+# SSK Case Management (asb_case_mgmt)
 
-ASB Case Management is a custom Frappe app for nonprofit and social-services operations, built to run with ERPNext version-15.
+SSK Case Management is a custom Frappe app for nonprofit and social-services operations, built to run with ERPNext version-15.
+The internal app name remains `asb_case_mgmt` for historical reasons, but all user-facing labels are SSK.
 
 This app is designed to keep nonprofit-specific workflows in app-level code (instead of forking ERPNext core), while still using ERPNext standard modules for HR, payroll-adjacent metrics, stock, and assets.
 
@@ -45,8 +46,11 @@ Implemented in this phase:
 5. Individual plan as personal card layer
 6. Specialist assignment model
 7. Center and specialist permission filters
-8. ASB workspace home page with core shortcuts
+8. SSK workspace home page with core shortcuts
 9. Employee custom fields for center and contract tracking
+10. Stock baseline data and center-scope validation
+11. Asset baseline data and center linkage validation
+12. Georgian language registration and translations for the app layer
 
 ## 3) Functional Architecture
 
@@ -249,8 +253,8 @@ Key fields:
 
 ### Roles
 
-1. ASB Center Coordinator
-2. ASB Specialist
+1. SSK Center Coordinator
+2. SSK Specialist
 3. System Manager (full access)
 
 ### Access Rules
@@ -266,8 +270,8 @@ Permission query and has-permission hooks are implemented in app code and attach
 
 A public workspace is created:
 
-1. Label: ASB Center Home
-2. Route: /app/asb-center-home
+1. Label: SSK Center Home
+2. Route: /app/ssk-center-home
 
 Workspace shortcuts include:
 
@@ -277,9 +281,9 @@ Workspace shortcuts include:
 4. Service Visit
 5. Assessment
 
-Role home pages for ASB Specialist and ASB Center Coordinator are set to:
+Role home pages for SSK Specialist and SSK Center Coordinator are set to:
 
-1. /app/asb-center-home
+1. /app/ssk-center-home
 
 ## 7) Employee Linkage and Contracts
 
@@ -309,7 +313,7 @@ These methods provide a clean integration point for future payroll calculations 
 ### Prerequisites
 
 1. Frappe Bench with ERPNext version-15
-2. Site created (example: asb.localhost)
+2. Site created (example: <site-name>)
 3. App installed on site
 
 ### Install App
@@ -317,7 +321,7 @@ These methods provide a clean integration point for future payroll calculations 
 Run from bench root:
 
 ```bash
-bench get-app <REPO_URL> --branch develop
+bench get-app <REPO_URL> --branch main
 bench --site <site-name> install-app asb_case_mgmt
 bench --site <site-name> migrate
 ```
@@ -342,7 +346,7 @@ bench start
 Open:
 
 1. Login: http://127.0.0.1:8000/login
-2. Workspace: http://127.0.0.1:8000/app/asb-center-home
+2. Workspace: http://127.0.0.1:8000/app/ssk-center-home
 
 ## 11) Migrations and Patches
 
@@ -351,6 +355,13 @@ Patches currently registered:
 1. asb_case_mgmt.patches.v1_0.create_base_roles
 2. asb_case_mgmt.patches.v1_0.setup_employee_linkage
 3. asb_case_mgmt.patches.v1_0.set_home_workspace
+4. asb_case_mgmt.patches.v1_0.setup_visit_assessment_alignment
+5. asb_case_mgmt.patches.v1_0.setup_payroll_monthly_summary
+6. asb_case_mgmt.patches.v1_0.setup_fiscal_year_baseline
+7. asb_case_mgmt.patches.v1_0.setup_stock_baseline
+8. asb_case_mgmt.patches.v1_0.setup_asset_baseline
+9. asb_case_mgmt.patches.v1_0.rename_asb_to_ssk
+10. asb_case_mgmt.patches.v1_0.register_georgian_language
 
 After pulling updates:
 
@@ -358,6 +369,14 @@ After pulling updates:
 cd /path/to/frappe-bench
 bench --site <site-name> migrate
 ```
+
+### Deployment and Handover Docs
+
+- [PROD_DEPLOY.md](PROD_DEPLOY.md)
+- [RELEASE_NOTES.md](RELEASE_NOTES.md)
+- [FINAL_HANDOVER.md](FINAL_HANDOVER.md)
+- [docs/BASELINE_DATA.md](docs/BASELINE_DATA.md)
+- [UAT_STATUS.md](UAT_STATUS.md)
 
 ## 12) End-to-End Testing Guide
 
@@ -376,7 +395,7 @@ Recommended UAT sequence:
 1. Beneficiary age is auto-computed
 2. Specialist cannot create visit for unassigned beneficiary
 3. Assessment repeated or final requires prior assessment
-4. Specialist and coordinator land on ASB Center Home
+4. Specialist and coordinator land on SSK Center Home
 5. Center and specialist data filters are enforced in lists
 
 ### API checks
@@ -425,9 +444,7 @@ Core app files:
 4. Workspace
 	- asb_case_mgmt/asb_center/workspace/asb_center_home/asb_center_home.json
 5. Patches
-	- asb_case_mgmt/patches/v1_0/create_base_roles.py
-	- asb_case_mgmt/patches/v1_0/setup_employee_linkage.py
-	- asb_case_mgmt/patches/v1_0/set_home_workspace.py
+	- asb_case_mgmt/patches/v1_0 (see patches.txt for the ordered list)
 
 DocTypes:
 
@@ -448,8 +465,8 @@ All DocType definitions live under:
 
 Next planned scope:
 
-1. Inventory and warehouse flows for humanitarian items, hygiene kits, medical supplies, and expiry tracking
-2. Asset registry for vehicles, tents, laptops, maintenance schedules, and depreciation readiness
+1. Advanced inventory flows (consumables, expiry tracking, distribution reporting)
+2. Extended asset lifecycle workflows (maintenance scheduling, depreciation automation)
 3. Payroll mapping from monthly service units to Salary Slip logic
 4. Additional dashboards and reports
 

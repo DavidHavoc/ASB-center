@@ -8,16 +8,14 @@ DEMO_CENTERS = [
 		"description": "Main urban service center in Tbilisi",
 		"address": "Tbilisi - Vake",
 		"phone": "+995599000001",
-		"email": "tbilisi.vake.center@ssk.localhost",
-		"legacy_names": ["ASB Baghdad Center"],
+		"email": "tbilisi.vake.center@example.invalid",
 	},
 	{
 		"center_name": "SSK Tbilisi Saburtalo Center",
 		"description": "Secondary service center in Tbilisi",
 		"address": "Tbilisi - Saburtalo",
 		"phone": "+995599000002",
-		"email": "tbilisi.saburtalo.center@ssk.localhost",
-		"legacy_names": ["ASB Basra Center"],
+		"email": "tbilisi.saburtalo.center@example.invalid",
 	},
 ]
 
@@ -27,30 +25,27 @@ DEMO_EMPLOYEES = [
 		"last_name": "Beridze",
 		"gender": "Female",
 		"date_of_birth": "1990-05-14",
-		"user_id": "nino.specialist@ssk.localhost",
+		"user_id": "nino.specialist@example.invalid",
 		"center": "SSK Tbilisi Vake Center",
 		"contract_number": "SSK-TBS-EMP-001",
-		"legacy_user_ids": ["ali.specialist@asb.localhost"],
 	},
 	{
 		"first_name": "Giorgi",
 		"last_name": "Kapanadze",
 		"gender": "Male",
 		"date_of_birth": "1992-11-03",
-		"user_id": "giorgi.specialist@ssk.localhost",
+		"user_id": "giorgi.specialist@example.invalid",
 		"center": "SSK Tbilisi Vake Center",
 		"contract_number": "SSK-TBS-EMP-002",
-		"legacy_user_ids": ["sara.specialist@asb.localhost"],
 	},
 	{
 		"first_name": "Ana",
 		"last_name": "Mchedlidze",
 		"gender": "Female",
 		"date_of_birth": "1988-08-22",
-		"user_id": "ana.specialist@ssk.localhost",
+		"user_id": "ana.specialist@example.invalid",
 		"center": "SSK Tbilisi Saburtalo Center",
 		"contract_number": "SSK-TBS-EMP-003",
-		"legacy_user_ids": ["omar.specialist@asb.localhost"],
 	},
 ]
 
@@ -60,7 +55,7 @@ DEMO_BENEFICIARIES = [
 		"full_name": "Nino Gelashvili",
 		"service_type": "Disability Support",
 		"center": "SSK Tbilisi Vake Center",
-		"specialist": "nino.specialist@ssk.localhost",
+		"specialist": "nino.specialist@example.invalid",
 		"birth_date": "2011-06-20",
 	},
 	{
@@ -68,7 +63,7 @@ DEMO_BENEFICIARIES = [
 		"full_name": "Luka Chikovani",
 		"service_type": "Child Protection",
 		"center": "SSK Tbilisi Vake Center",
-		"specialist": "giorgi.specialist@ssk.localhost",
+		"specialist": "giorgi.specialist@example.invalid",
 		"birth_date": "2016-02-12",
 	},
 	{
@@ -76,7 +71,7 @@ DEMO_BENEFICIARIES = [
 		"full_name": "Elene Qavlashvili",
 		"service_type": "Rehabilitation",
 		"center": "SSK Tbilisi Vake Center",
-		"specialist": "nino.specialist@ssk.localhost",
+		"specialist": "nino.specialist@example.invalid",
 		"birth_date": "2008-09-30",
 	},
 	{
@@ -84,7 +79,7 @@ DEMO_BENEFICIARIES = [
 		"full_name": "Saba Tsertsvadze",
 		"service_type": "Social Protection",
 		"center": "SSK Tbilisi Saburtalo Center",
-		"specialist": "ana.specialist@ssk.localhost",
+		"specialist": "ana.specialist@example.invalid",
 		"birth_date": "2014-01-18",
 	},
 	{
@@ -92,7 +87,7 @@ DEMO_BENEFICIARIES = [
 		"full_name": "Mariam Dvalishvili",
 		"service_type": "Disability Support",
 		"center": "SSK Tbilisi Saburtalo Center",
-		"specialist": "ana.specialist@ssk.localhost",
+		"specialist": "ana.specialist@example.invalid",
 		"birth_date": "2012-12-05",
 	},
 ]
@@ -111,8 +106,8 @@ def _ensure_company():
 				"doctype": "Company",
 				"company_name": "SSK Foundation",
 				"abbr": "SSK",
-				"default_currency": "USD",
-				"country": "Iraq",
+				"default_currency": "GEL",
+				"country": "Georgia",
 			}
 		).insert(ignore_permissions=True)
 
@@ -131,23 +126,23 @@ def _ensure_user(email, first_name):
 		).insert(ignore_permissions=True)
 
 
+def _ensure_non_production():
+	if frappe.flags.in_test or frappe.conf.get("developer_mode"):
+		return
+	frappe.throw("Demo seed script can only run in developer mode.")
+
+
 def execute():
+	_ensure_non_production()
 	_ensure_gender_values()
 	_ensure_company()
 
 	center_lookup = {}
 	for center in DEMO_CENTERS:
 		doc = None
-		for legacy_name in center.get("legacy_names", []):
-			existing_legacy = frappe.db.get_value("Center", {"center_name": legacy_name}, "name")
-			if existing_legacy:
-				doc = frappe.get_doc("Center", existing_legacy)
-				break
-
-		if not doc:
-			existing_center = frappe.db.get_value("Center", {"center_name": center["center_name"]}, "name")
-			if existing_center:
-				doc = frappe.get_doc("Center", existing_center)
+		existing_center = frappe.db.get_value("Center", {"center_name": center["center_name"]}, "name")
+		if existing_center:
+			doc = frappe.get_doc("Center", existing_center)
 
 		if doc:
 			doc.update(center)
@@ -159,14 +154,8 @@ def execute():
 
 	employee_lookup = {}
 	for employee in DEMO_EMPLOYEES:
-		for legacy_user_id in employee.get("legacy_user_ids", []):
-			_ensure_user(legacy_user_id, employee["first_name"])
 		_ensure_user(employee["user_id"], employee["first_name"])
-		existing_employee = None
-		for lookup_user_id in [*employee.get("legacy_user_ids", []), employee["user_id"]]:
-			existing_employee = frappe.db.get_value("Employee", {"user_id": lookup_user_id}, "name")
-			if existing_employee:
-				break
+		existing_employee = frappe.db.get_value("Employee", {"user_id": employee["user_id"]}, "name")
 		if existing_employee:
 			doc = frappe.get_doc("Employee", existing_employee)
 			doc.first_name = employee["first_name"]
@@ -216,7 +205,7 @@ def execute():
 			doc.municipality = "Demo Municipality"
 			doc.guardian_parent = "Demo Guardian"
 			doc.phone = "+995599111111"
-			doc.email = f"{beneficiary['beneficiary_code'].lower()}@ssk.localhost"
+			doc.email = f"{beneficiary['beneficiary_code'].lower()}@example.invalid"
 			doc.sex = "Female"
 			doc.birth_date = beneficiary["birth_date"]
 			doc.diagnosis_status = "Demo case for UAT"
@@ -251,8 +240,8 @@ def execute():
 				"region": beneficiary["center"].split()[1],
 				"municipality": "Demo Municipality",
 				"guardian_parent": "Demo Guardian",
-				"phone": "+9647711111111",
-				"email": f"{beneficiary['beneficiary_code'].lower()}@ssk.localhost",
+				"phone": "+995599111111",
+				"email": f"{beneficiary['beneficiary_code'].lower()}@example.invalid",
 				"sex": "Female",
 				"birth_date": beneficiary["birth_date"],
 				"diagnosis_status": "Demo case for UAT",
@@ -274,10 +263,8 @@ def execute():
 		beneficiary_doc.insert(ignore_permissions=True)
 
 	frappe.db.commit()
-	print(
-		{
-			"centers": list(center_lookup.values()),
-			"employees": list(employee_lookup.values()),
-			"beneficiaries": [item["beneficiary_code"] for item in DEMO_BENEFICIARIES],
-		}
-	)
+	return {
+		"centers": list(center_lookup.values()),
+		"employees": list(employee_lookup.values()),
+		"beneficiaries": [item["beneficiary_code"] for item in DEMO_BENEFICIARIES],
+	}

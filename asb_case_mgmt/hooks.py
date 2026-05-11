@@ -1,7 +1,7 @@
 app_name = "asb_case_mgmt"
-app_title = "SSK center"
+app_title = "SSK Case Management"
 app_publisher = "Dvd"
-app_description = "Center app for SSK "
+app_description = "Case management app for SSK centers on Frappe/ERPNext."
 app_email = "godhvc@gmail.com"
 app_license = "mit"
 
@@ -15,7 +15,7 @@ app_license = "mit"
 # 	{
 # 		"name": "asb_case_mgmt",
 # 		"logo": "/assets/asb_case_mgmt/logo.png",
-# 		"title": "ASB center",
+# 		"title": "SSK Case Management",
 # 		"route": "/asb_case_mgmt",
 # 		"has_permission": "asb_case_mgmt.api.permission.has_app_permission"
 # 	}

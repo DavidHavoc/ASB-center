@@ -6,11 +6,21 @@ from frappe.utils import nowdate
 
 
 
+
+def _resolve_company():
+	preferred = frappe.db.get_value("Company", {"company_name": "SSK Foundation"}, "name")
+	if preferred:
+		return preferred
+
+	companies = frappe.get_all("Company", pluck="name")
+	if len(companies) == 1:
+		return companies[0]
+
+	return None
+
+
 def execute():
-	company = (
-		frappe.db.get_value("Company", {"company_name": "SSK Foundation"}, "name")
-		or frappe.db.get_value("Company", {}, "name")
-	)
+	company = _resolve_company()
 	if not company:
 		return
 

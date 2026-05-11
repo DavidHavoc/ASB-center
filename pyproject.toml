@@ -3,7 +3,7 @@ name = "asb_case_mgmt"
 authors = [
     { name = "Dvd", email = "godhvc@gmail.com"}
 ]
-description = "Center app for ASB "
+description = "SSK case management app for Frappe/ERPNext"
 requires-python = ">=3.10"
 readme = "README.md"
 dynamic = ["version"]

@@ -1,1 +1,1 @@
-# Package marker for ASB Case Management scripts.
+# Package marker for SSK Case Management scripts.

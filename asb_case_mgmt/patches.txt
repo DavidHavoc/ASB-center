@@ -12,4 +12,5 @@ asb_case_mgmt.patches.v1_0.setup_payroll_monthly_summary
 asb_case_mgmt.patches.v1_0.setup_fiscal_year_baseline
 asb_case_mgmt.patches.v1_0.setup_stock_baseline
 asb_case_mgmt.patches.v1_0.setup_asset_baseline
+asb_case_mgmt.patches.v1_0.rename_asb_to_ssk
 asb_case_mgmt.patches.v1_0.register_georgian_language

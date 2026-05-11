@@ -25,13 +25,13 @@ class TestPayrollPermissions(FrappeTestCase):
 
 		suffix = frappe.generate_hash(length=8)
 		self.coordinator_user = create_user(
-			f"test_asb_coord_{suffix}@example.com", "SSK Center Coordinator"
+			f"test_ssk_coord_{suffix}@example.com", "SSK Center Coordinator"
 		)
 		self.specialist_user_a = create_user(
-			f"test_asb_spec_a_{suffix}@example.com", "SSK Specialist"
+			f"test_ssk_spec_a_{suffix}@example.com", "SSK Specialist"
 		)
 		self.specialist_user_b = create_user(
-			f"test_asb_spec_b_{suffix}@example.com", "SSK Specialist"
+			f"test_ssk_spec_b_{suffix}@example.com", "SSK Specialist"
 		)
 		self._ensure_user_role(self.coordinator_user, "SSK Center Coordinator")
 		self._ensure_user_role(self.specialist_user_a, "SSK Specialist")
@@ -185,7 +185,7 @@ class TestPayrollPermissions(FrappeTestCase):
 			company = frappe.get_doc(
 				{
 					"doctype": "Company",
-					"company_name": "Test Company ASB",
+					"company_name": "Test Company SSK",
 					"country": "India",
 					"default_currency": "INR",
 				}
