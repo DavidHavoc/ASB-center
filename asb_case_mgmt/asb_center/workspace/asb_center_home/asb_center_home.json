@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"asb_header_1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>SSK Case Management</b></span>\",\"col\":12}},{\"id\":\"asb_shortcut_center\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Center\",\"col\":3}},{\"id\":\"asb_shortcut_individual_plan\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Individual Plan\",\"col\":3}},{\"id\":\"asb_shortcut_beneficiary\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Beneficiary\",\"col\":3}},{\"id\":\"asb_shortcut_service_visit\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Visit\",\"col\":3}},{\"id\":\"asb_shortcut_assessment\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Assessment\",\"col\":3}}]",
+ "content": "[{\"id\":\"asb_header_1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>SSK Center Management</b></span>\",\"col\":12}},{\"id\":\"asb_shortcut_center\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Center\",\"col\":3}},{\"id\":\"asb_quick_list_center\",\"type\":\"quick_list\",\"data\":{\"quick_list_name\":\"Centers\",\"col\":12}}]",
  "creation": "2026-04-09 00:00:00.000000",
  "custom_blocks": [],
  "docstatus": 0,
@@ -20,33 +20,18 @@
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
- "quick_lists": [],
+ "quick_lists": [
+  {
+   "document_type": "Center",
+   "label": "Centers"
+  }
+ ],
  "roles": [],
  "sequence_id": 1.0,
  "shortcuts": [
   {
    "label": "Center",
    "link_to": "Center",
-   "type": "DocType"
-  },
-  {
-   "label": "Individual Plan",
-   "link_to": "Individual Plan",
-   "type": "DocType"
-  },
-  {
-   "label": "Beneficiary",
-   "link_to": "Beneficiary",
-   "type": "DocType"
-  },
-  {
-   "label": "Service Visit",
-   "link_to": "Service Visit",
-   "type": "DocType"
-  },
-  {
-   "label": "Assessment",
-   "link_to": "Assessment",
    "type": "DocType"
   }
  ],

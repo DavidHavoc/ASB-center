@@ -53,9 +53,10 @@ def _safe_rename(doctype, old_name, new_name):
 			old_name,
 			new_name,
 			merge=True,
+			ignore_permissions=True,
 		)
 		return
-	frappe.rename_doc(doctype, old_name, new_name)
+	frappe.rename_doc(doctype, old_name, new_name, ignore_permissions=True)
 
 
 def _rename_roles():
